@@ -235,7 +235,8 @@ window.onload = function() {
 </head>
 <body>
 
-<h1>Geo3x3</h1>
+<h1><img src=https://taisukef.github.io/Geo3x3/Geo3x3_WhiteBack.png style="height:15vh" alt=Geo3x3></h1>
+Geo3x3 is a Public Domain Geocode System (<a href=https://github.com/taisukef/Geo3x3/blob/master/README.md>src on GitHub</a>)<br>
 
 <div id='geo3x3'>Geo3x3: <input type="text" id="output"> level: <span id="outputlv"></span></div>
 <div id="divmap"></div>
@@ -247,8 +248,13 @@ lat,lng: <input type="text" id="latlng"><button id='movebtn'>move</button>
 </div>
 
 <div id='help'>
-Geo3x3（ジオスリーバイスリー）は、地球上の範囲を表すコードです。WまたはEで始まり、領域が細かくなるほどコードが長くなります。<br>
+<a href=https://github.com/taisukef/Geo3x3/>Geo3x3</a> is a simple geo-coding system for WGS84<br>
+<a href=https://github.com/taisukef/Geo3x3/>Geo3x3</a>はシンプルなWGS84向けジオコーディングです<br>
 <br>
+divide the earth to two (West or East), recursive divisiton 3x3(9th). longer is more in detail.<br>
+地球を東(E)と西(W)に分け、再帰的に3x3の9エリアで分割します。長いほど精度が上がります。<br>
+<br>
+You can click on the map to obtain the Geo3x3 code.<br>
 クリックすると書き換わるURLを場所の共有用に使えるサンプルアプリになっています。<br>
 <br>
 アルゴリズム<br>
@@ -258,7 +264,7 @@ Geo3x3（ジオスリーバイスリー）は、地球上の範囲を表すコ�
 というものです。<br>
 ※9分割の部分に、<a href=https://fukuno.jig.jp/2012/sanshinclk.html>3進法</a>を使いました。意外と使うものですね。<br>
 <br>
-JavaScriptのソースコードはこちら「<a href="https://taisukef.github.io/Geo3x3/Geo3x3.js">Geo3x3.js</a>」<br>
+JavaScriptのソースコードはこちら「<a href="https://taisukef.github.io/Geo3x3/Geo3x3.js">Geo3x3.js</a>」<a href=https://github.com/taisukef/Geo3x3/>その他多数</a><br>
 ライセンスは何の制約もなく自由に使える <a href=http://creativecommons.org/licenses/by-nd/3.0/>CC0 (Public Domain)</a> とします。<br>
 <br>
 同様な表記方法に、<a href=http://lpaddress.com/>LPaddress</a>、<a href=https://ja.wikipedia.org/wiki/%E3%82%B8%E3%82%AA%E3%83%8F%E3%83%83%E3%82%B7%E3%83%A5>Geohash</a>、<a href=http://geohex.net/>GeoHex</a>、<a href=https://maps.google.com/pluscodes/>Plus Codes</a>などがあります。<br>
