@@ -1,6 +1,6 @@
 class Geo3x3 {
   static encode(lat, lng, level) {
-    if (level < 1) {
+    if (level < 1 || !level || level >= 1000) {
       return null;
     }
     if (typeof lat == "string") {
@@ -9,12 +9,14 @@ class Geo3x3 {
     if (typeof lng == "string") {
       lng = parseFloat(lng);
     }
+    if (isNaN(lat) || isNaN(lng) || lat < -90 || lat > 90 || lng < -180 || lng > 180) {
+      return null;
+    }
     let res = "E";
     if (lng < 0.0) {
       res = "W";
       lng += 180.0;
     }
-    //lat = 90 - lat; // 0:the North Pole,  180:the South Pole
     lat += 90.0; // 180:the North Pole,  0:the South Pole
     let unit = 180.0;
     for (let i = 1; i < level; i++) {
