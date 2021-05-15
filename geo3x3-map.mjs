@@ -1,5 +1,5 @@
 import L from "https://code4sabae.github.io/leaflet-mjs/leaflet.mjs";
-import { Geo3x3 } from "https://taisukef.github.io/Geo3x3/Geo3x3.js";
+import { Geo3x3 } from "https://geo3x3.com/Geo3x3.js";
 
 class Geo3x3Map extends HTMLElement {
   constructor () {
