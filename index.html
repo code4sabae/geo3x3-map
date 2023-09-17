@@ -1,9 +1,11 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width">
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><link rel="icon" href="data:">
 <title>Geo3x3 - a simple geocode system for WGS84</title>
 <meta property="og:image" content="https://fukuno.jig.jp/2012/geo3x3.jpg">
 <style>
 body {
 	text-align: center;
+	font-family: sans-serif;
+	-webkit-text-size-adjust: 100%;
 }
 h1 img {
 	width: 80vw;
@@ -19,8 +21,9 @@ h1 img {
 }
 #geo3x3 {
 	font-size: 3vw;
+	margin: .2em 0;
 }
-.in_geo3x3 {
+#in_geo3x3 {
 	font-size: 3vw;
 	width: 60vw;
 }
@@ -41,6 +44,26 @@ h1 img {
 	border: gray 2px solid;
 	padding: 1em;
 	margin: 1em;
+}
+a {
+	color: gray !important;
+}
+#map_credit {
+  display: inline-block;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 0.2em;
+  margin: 0;
+  background-color: rgba(255, 255, 255, .7);
+  font-size: 70%;
+  color: black;
+  z-index: 10000;
+}
+@media (max-width: 800px) {
+	input {
+		font-size: 16px !important;
+	}
 }
 </style>
 <script type="module">
@@ -70,6 +93,7 @@ const show = (geo3x3) => {
 
 const baseLayer = createGSILayer();
 const geo3x3Layer = createGeo3x3Layer(in_geo3x3.value);
+
 
 const deckgl = new deck.DeckGL({
   container: "divmap",
@@ -110,6 +134,14 @@ document.body.onkeyup = (e) => {
   }
 };
 
+deckgl.setProps({ onClick: (e) => {
+	const ll = e.coordinate;
+	const level = outputlv.textContent;
+	const g = Geo3x3.encode(ll[1], ll[0], level);
+	in_geo3x3.value = g;
+	showMap(g);
+}});
+
 showMap(in_geo3x3.value);
 
 </script>
@@ -120,12 +152,14 @@ showMap(in_geo3x3.value);
 Geo3x3 is a Public Domain Geocode System (<a href=https://github.com/taisukef/Geo3x3/blob/master/README.md>src on GitHub</a>)<br>
 
 <div id='geo3x3'>Geo3x3: <input type="text" class="in_geo3x3" id="in_geo3x3"> level: <span id="outputlv"></span></div>
-<div id="divmap"></div>
+<div id="divmap">
+<a id=map_credit href=https://maps.gsi.go.jp/development/ichiran.html>&copy;国土地理院</a>
+</div>
 <div>
 <!--level: <select id="level"></select>-->
 level: <input type=text id="level">
 <!-- zoom: <input type="text" id="zoom"> -->
-unit: <input type="text" id="unit"><br>
+unit: <input type="text" id="unit">
 lat,lng: <input type="text" id="latlng">
 <!--<button id='movebtn'>move</button>-->
 </div>
